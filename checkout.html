@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <style>
+        .checkout-cart { display: flex; flex-direction: column; padding: 20px; }
+        .box { display: flex; align-items: center; justify-content: space-between; margin: 10px 0; border: 1px solid #ddd; padding: 10px; }
+        .content { display: flex; flex-direction: column; }
+        .total { font-weight: bold; margin-top: 20px; }
+        .btn { background-color: #28a745; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-top: 20px; display: inline-block; }
+        .checkout-container { width: 80%; margin: 0 auto; }
+        h1 { text-align: center; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="checkout-container">
+        <h1>Checkout Page</h1>
+
+        <div class="checkout-cart">
+            <div class="box">
+                <img src="image/watermelon.jpg" alt="Watermelon" width="50" height="50">
+                <div class="content">
+                    <h3>Watermelon</h3>
+                    <span class="price">₹60/-</span>
+                    <span class="quantity">qty : 1</span>
+                </div>
+            </div>
+            <div class="box">
+                <img src="image/apple.jpg" alt="Apples" width="50" height="50">
+                <div class="content">
+                    <h3>Apples</h3>
+                    <span class="price">₹30/-</span>
+                    <span class="quantity">qty : 1 KG</span>
+                </div>
+            </div>
+            <div class="box">
+                <img src="image/onion.jpg" alt="Onion" width="50" height="50">
+                <div class="content">
+                    <h3>Onion</h3>
+                    <span class="price">₹40/-</span>
+                    <span class="quantity">qty : 1 KG</span>
+                </div>
+            </div>
+            <div class="box">
+                <img src="image/tomato.jpg" alt="Tomato" width="50" height="50">
+                <div class="content">
+                    <h3>Tomato</h3>
+                    <span class="price">₹40/-</span>
+                    <span class="quantity">qty : 1 KG</span>
+                </div>
+            </div>
+            <div class="box">
+                <img src="image/chicken.jpg" alt="Chicken" width="50" height="50">
+                <div class="content">
+                    <h3>Chicken</h3>
+                    <span class="price">₹200/-</span>
+                    <span class="quantity">qty : 1 KG</span>
+                </div>
+            </div>
+            <div class="box">
+                <img src="image/mutton.jpg" alt="Mutton" width="50" height="50">
+                <div class="content">
+                    <h3>Mutton</h3>
+                    <span class="price">₹700/-</span>
+                    <span class="quantity">qty : 1 KG</span>
+                </div>
+            </div>
+            <div class="box">
+                <img src="image/milk.jpg" alt="Milk" width="50" height="50">
+                <div class="content">
+                    <h3>Milk</h3>
+                    <span class="price">₹50/-</span>
+                    <span class="quantity">qty : 1 Litre</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="total">
+            <p><strong>Total: ₹1120/-</strong></p>
+        </div>
+
+        <a href="payment.html" class="btn">Confirm Order</a>
+    </div>
+
+</body>
+</html>

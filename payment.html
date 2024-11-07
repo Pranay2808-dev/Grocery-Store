@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .payment-container {
+            width: 50%;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .payment-option {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        .payment-option label {
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .payment-option input[type="radio"] {
+            margin-right: 10px;
+        }
+        .upi-section, .card-section {
+            display: none;
+        }
+        .card-section input {
+            margin-bottom: 10px;
+        }
+        .thank-you {
+            display: none;
+            text-align: center;
+            font-size: 24px;
+            color: green;
+            margin-top: 20px;
+        }
+        .thank-you.show {
+            display: block;
+            animation: fadeIn 2s ease-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="payment-container">
+        <h2 class="section-title">Payment</h2>
+
+        <!-- Payment Options -->
+        <div class="payment-option">
+            <div>
+                <input type="radio" id="upi" name="payment-method" onclick="togglePaymentMethod('upi')" checked>
+                <label for="upi">UPI</label>
+            </div>
+            <div>
+                <input type="radio" id="card" name="payment-method" onclick="togglePaymentMethod('card')">
+                <label for="card">Card</label>
+            </div>
+        </div>
+
+        <!-- UPI Section -->
+        <div class="upi-section" id="upi-section">
+            <h3>Scan the QR Code</h3>
+            <img src="./image/scanner1.jpg" alt="QR Code" width="200">
+            <p>Scan the QR Code to complete the payment via UPI.</p>
+        </div>
+
+        <!-- Card Section -->
+        <div class="card-section" id="card-section">
+            <h3>Enter Card Details</h3>
+            <form id="card-form">
+                <div class="form-group">
+                    <label for="card-number">Card Number</label>
+                    <input type="text" class="form-control" id="card-number" placeholder="Card Number" required>
+                </div>
+                <div class="form-group">
+                    <label for="expiry-date">Expiry Date</label>
+                    <input type="text" class="form-control" id="expiry-date" placeholder="MM/YY" required>
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <input type="text" class="form-control" id="cvv" placeholder="CVV" required>
+                </div>
+            </form>
+        </div>
+
+        <!-- Submit Button -->
+        <button class="btn btn-success btn-block" onclick="submitPayment()">Confirm Payment</button>
+
+        <!-- Thank You Animation -->
+        <div class="thank-you" id="thank-you">
+            <p>Thank You for Your Payment!</p>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <script>
+        // Function to toggle between UPI and Card Payment sections
+        function togglePaymentMethod(method) {
+            if (method === 'upi') {
+                document.getElementById('upi-section').style.display = 'block';
+                document.getElementById('card-section').style.display = 'none';
+            } else if (method === 'card') {
+                document.getElementById('upi-section').style.display = 'none';
+                document.getElementById('card-section').style.display = 'block';
+            }
+        }
+
+        // Function to simulate payment confirmation
+        function submitPayment() {
+            // Simple check if card details are entered for card payment
+            const cardNumber = document.getElementById('card-number').value;
+            const expiryDate = document.getElementById('expiry-date').value;
+            const cvv = document.getElementById('cvv').value;
+
+            // If Card is selected, validate card fields
+            if (document.getElementById('card').checked) {
+                if (!cardNumber || !expiryDate || !cvv) {
+                    alert("Please fill all card details.");
+                    return;
+                }
+            }
+
+            // Show Thank You animation after submission
+            document.getElementById('thank-you').classList.add('show');
+        }
+
+        // Initialize by displaying UPI by default
+        window.onload = function() {
+            togglePaymentMethod('upi');
+        }
+    </script>
+
+</body>
+</html>
